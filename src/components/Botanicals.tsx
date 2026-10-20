@@ -34,11 +34,13 @@ function Sprig({ className = "" }: MarkProps) {
 
 export function BotanicalFrame() {
   return (
-    <div className="botanical-layer pointer-events-none fixed inset-0 z-[2] overflow-hidden" aria-hidden="true">
+    <div className="pointer-events-none fixed inset-0 z-[2] overflow-hidden" aria-hidden="true">
+      <div className="botanical-layer absolute inset-0">
       <CornerRose className="absolute -left-8 top-6 w-28 opacity-45 sm:w-40 sm:opacity-70" />
       <CornerRose className="absolute -right-10 bottom-4 w-32 -scale-x-100 opacity-40 sm:w-44 sm:opacity-60" />
       <Sprig className="absolute right-[6%] top-8 hidden w-16 opacity-50 sm:block" />
       <Sprig className="absolute bottom-8 left-[5%] hidden w-14 -scale-x-100 rotate-12 opacity-40 sm:block" />
+      </div>
     </div>
   );
 }

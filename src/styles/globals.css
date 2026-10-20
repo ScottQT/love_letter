@@ -37,20 +37,22 @@
 
 html {
   scroll-behavior: auto;
+  background: #e7d3c3;
 }
 
 html,
 body,
 #root {
   min-height: 100%;
+  background: #e7d3c3;
 }
 
 body {
   margin: 0;
-  background: #e7d3c3;
   color: #6b2737;
   font-family: "Cormorant Garamond", "Palatino Linotype", Palatino, serif;
-  overflow-x: hidden;
+  /* clip does not create a scroll container. hidden does, and iOS then paints a white screen mid-scroll. */
+  overflow-x: clip;
   text-rendering: optimizeLegibility;
 }
 
@@ -76,6 +78,15 @@ button {
 
 .writing-track {
   height: calc(100svh + 250svh);
+  background: #e7d3c3;
+}
+
+.letter-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+  background: #e7d3c3;
 }
 
 @media (min-width: 640px) {
@@ -91,7 +102,7 @@ button {
 }
 
 .bg-layer {
-  transform: translate3d(0, calc(var(--p) * 26px), 0) scale(1.08);
+  transform: translate3d(0, calc(var(--p) * 26px), 0);
 }
 
 .petal-layer {
@@ -126,14 +137,26 @@ button {
     0 2px 8px rgba(80, 36, 36, 0.08);
 }
 
+.paper-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image:
+    radial-gradient(rgba(139, 115, 94, 0.55) 0.45px, transparent 0.5px),
+    radial-gradient(rgba(255, 255, 255, 0.8) 0.35px, transparent 0.45px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+}
+
 .paper-crease {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  opacity: 0.8;
   background:
-    linear-gradient(115deg, transparent 0 42%, rgba(139, 115, 94, 0.045) 42.4%, transparent 43%),
+    linear-gradient(115deg, transparent 0 42%, rgba(139, 115, 94, 0.05) 42.4%, transparent 43%),
     linear-gradient(250deg, transparent 0 70%, rgba(255, 255, 255, 0.28) 71%, transparent 72%);
-  mix-blend-mode: multiply;
 }
 
 .icon-button {
@@ -143,9 +166,8 @@ button {
   place-items: center;
   border-radius: 999px;
   border: 1px solid rgba(107, 39, 55, 0.18);
-  background: rgba(248, 241, 231, 0.82);
+  background: rgba(248, 241, 231, 0.96);
   color: #6b2737;
-  backdrop-filter: blur(8px);
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -156,9 +178,8 @@ button {
 .ending-card {
   border: 1px solid rgba(216, 189, 138, 0.85);
   border-radius: 18px;
-  background: rgba(248, 241, 231, 0.94);
+  background: #f8f1e7;
   box-shadow: 0 18px 44px rgba(80, 36, 36, 0.12);
-  backdrop-filter: blur(10px);
 }
 
 .letter-button {
@@ -211,8 +232,13 @@ button {
   width: 38vw;
   height: 78vh;
   background: linear-gradient(180deg, rgba(248, 241, 231, 0.55), transparent 72%);
-  filter: blur(16px);
   animation: ray-drift 16s ease-in-out infinite alternate;
+}
+
+@media (min-width: 640px) {
+  .ray {
+    filter: blur(16px);
+  }
 }
 
 .petal {

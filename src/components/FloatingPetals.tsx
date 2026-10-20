@@ -20,7 +20,8 @@ const dust = Array.from({ length: 16 }, (_, index) => ({
 export function FloatingPetals() {
   return (
     <>
-      <div className="petal-layer pointer-events-none fixed inset-0 z-[1] overflow-hidden" aria-hidden="true">
+      <div className="pointer-events-none fixed inset-0 z-[1] overflow-hidden" aria-hidden="true">
+        <div className="petal-layer absolute inset-0">
         {petals.map((petal) => (
           <span
             key={`${petal.left}-${petal.top}`}
@@ -37,8 +38,10 @@ export function FloatingPetals() {
             </svg>
           </span>
         ))}
+        </div>
       </div>
-      <div className="dust-layer pointer-events-none fixed inset-0 z-[1]" aria-hidden="true">
+      <div className="pointer-events-none fixed inset-0 z-[1] overflow-hidden" aria-hidden="true">
+        <div className="dust-layer absolute inset-0">
         {dust.map((speck) => (
           <span
             key={`${speck.left}-${speck.top}`}
@@ -53,6 +56,7 @@ export function FloatingPetals() {
             }}
           />
         ))}
+        </div>
       </div>
     </>
   );

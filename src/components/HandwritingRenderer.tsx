@@ -128,9 +128,9 @@ function HandwritingRendererComponent({
   }
 
   return (
-    <div ref={frameRef} className="h-full w-full">
+    <div ref={frameRef} className="h-full w-full overflow-hidden">
     <svg
-      className="block h-full w-full overflow-visible"
+      className="block h-full w-full overflow-hidden"
       viewBox={layout ? `0 0 ${layout.width} ${layout.height}` : "0 0 100 100"}
       preserveAspectRatio="xMinYMin meet"
       role="presentation"

@@ -63,7 +63,7 @@ export function LetterExperience({ sceneRef, onReplay }: LetterExperienceProps) 
       ref={trackRef}
       className={reduced ? "relative z-10 min-h-[100svh]" : "writing-track relative z-10"}
     >
-      <div className={reduced ? "relative min-h-[100svh]" : "sticky top-0 h-[100svh]"}>
+      <div className={reduced ? "relative min-h-[100svh]" : "letter-stage"}>
         <div className="flex h-full min-h-0 flex-col items-center px-3 pt-14 pb-3 sm:px-6 sm:pt-16 sm:pb-4">
           <header className="w-full max-w-xl shrink-0 text-center">
             <h1 className="font-serif text-[clamp(1.7rem,4vw,3.15rem)] leading-none font-medium tracking-wide text-ink">
